@@ -1,9 +1,6 @@
 package com.example.spyglass.domain.user.services;
-
 import com.example.spyglass.domain.user.models.User;
-
 import java.util.Date;
-
 public interface UserService {
 
     void createProfile(User user);
@@ -13,16 +10,5 @@ public interface UserService {
     User updateUser(User user);
     User findUser (User user);
     User deleteUser(User user);
-
-
-
-
-
-
-
-
-
-
-
 
 }
