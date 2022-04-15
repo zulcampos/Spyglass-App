@@ -4,18 +4,29 @@ import com.example.spyglass.domain.goals.models.Goal;
 
 import com.example.spyglass.domain.goals.models.Goal;
 import com.example.spyglass.domain.goals.repos.GoalRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class GoalServiceImpl implements GoalService{
 
     private GoalService goalService;
     private GoalRepo goalRepo;
 
+    private static Logger logger = LoggerFactory.getLogger(GoalServiceImpl.class);
+
+    @Autowired
+    public GoalServiceImpl(GoalRepo goalRepo){
+        this.goalRepo = goalRepo;
+    }
     @Override
-    public Goal createGoal(Goal goal) {return null;
+    public Goal createGoal(Goal goal) {
+    return null;
     }
 
     @Override
-    public Goal findById(Long Id) {return null;
+    public Goal findById(Long Id) {
+        return null;
     }
 
     @Override
