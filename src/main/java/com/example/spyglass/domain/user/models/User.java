@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.spyglass.domain.user.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,6 +16,7 @@ public class User {
     private String email;
     private String dateOfBirth;
     private String password;
+
 
 
 }
