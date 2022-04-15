@@ -13,6 +13,7 @@ public class Goal {
     private Double endGoal;
     private Enum goalType;
     private Date goalStartDate;
+    private Date endGoalDate;
 
     public Long getId() {
         return id;
@@ -27,11 +28,12 @@ public class Goal {
 
     }
 
-    public Goal(Double startingAmount, Double endGoal, Enum goalType, Date goalStartDate) {
+    public Goal(Double startingAmount, Double endGoal, Enum goalType, Date goalStartDate,Date endGoalDate) {
         this.startingAmount = startingAmount;
         this.endGoal = endGoal;
         this.goalType = goalType;
         this.goalStartDate = goalStartDate;
+        this.endGoal = endGoal;
     }
 
     public Double getStartingAmount() {
