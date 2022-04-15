@@ -1,8 +1,12 @@
 package com.example.spyglass.domain.goals.services;
 
 import com.example.spyglass.domain.goals.models.Goal;
+import com.example.spyglass.domain.goals.repos.GoalRepo;
 
 public class GoalServiceImpl implements GoalService{
+
+    private GoalService goalService;
+    private GoalRepo goalRepo;
 
     @Override
     public Goal createGoal(Goal goal) {
