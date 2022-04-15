@@ -1,25 +1,23 @@
 package com.example.spyglass.domain.goals.services;
 
+import com.example.spyglass.domain.goals.models.Goal;
+
 public class GoalServiceImpl implements GoalService{
 
     @Override
-    public Goal createGoal(Goal goal) {
-        return null;
+    public Goal createGoal(Goal goal) {return null;
     }
 
     @Override
-    public Goal findById(Long Id) {
-        return null;
+    public Goal findById(Long Id) {return null;
     }
 
     @Override
-    public Goal updateGoal(Goal goal) {
-        return null;
+    public Goal updateGoal(Goal goal) {return null;
     }
 
     @Override
-    public Goal deleteGoal(Long Id) {
-        return null;
+    public Goal deleteGoal(Long Id) {return null;
     }
 
     @Override
