@@ -12,6 +12,7 @@ public class User {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     @JsonIgnore
     private Long id;
+
     private String firstName;
     private String lastName;
     private String email;

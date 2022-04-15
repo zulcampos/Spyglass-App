@@ -1,5 +1,8 @@
 package com.example.spyglass.domain.goals.services;
 
+import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
+import com.example.spyglass.domain.goals.models.Goal;
+
 public class GoalServiceImpl implements GoalService{
 
     @Override
@@ -18,8 +21,8 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
-    public Goal deleteGoal(Long Id) {
-        return null;
+    public void deleteGoal(Long Id) throws GoalNotFoundException {
+
     }
 
     @Override
@@ -29,6 +32,11 @@ public class GoalServiceImpl implements GoalService{
 
     @Override
     public Double leftToSave(Double endGoal, Double currentAmount) {
+        return null;
+    }
+
+    @Override
+    public Double setGoal(Double endGoal) {
         return null;
     }
 }
