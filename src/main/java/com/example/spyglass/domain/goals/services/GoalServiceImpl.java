@@ -1,5 +1,7 @@
 package com.example.spyglass.domain.goals.services;
 
+import com.example.spyglass.domain.goals.models.Goal;
+
 public class GoalServiceImpl implements GoalService{
 
     @Override
