@@ -1,5 +1,4 @@
 package com.example.spyglass.domain.goals.services;
-
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.Goal;
 
