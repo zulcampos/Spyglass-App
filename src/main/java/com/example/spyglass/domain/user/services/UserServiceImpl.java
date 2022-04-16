@@ -1,6 +1,5 @@
 package com.example.spyglass.domain.user.services;
 
-import com.example.spyglass.domain.goals.services.GoalService;
 import com.example.spyglass.domain.user.models.User;
 
 
