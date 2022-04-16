@@ -95,10 +95,18 @@ class GoalServiceImplTest {
 
     @Test
     void progressBarCal() {
+        String expected = "2.5%";
+        Double actual = goalService.progressBarCal(5.00,200.00);
+
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void leftToSave() {
+        String expected = "$195";
+        Double actual = goalService.leftToSave(200.00,5.00);
+
+        Assertions.assertEquals(expected,actual);
     }
 
     @Test

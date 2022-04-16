@@ -8,8 +8,7 @@ public class Goal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Double startingAmount;
-    private Double currentAmount;
+    private Double savedSoFar;
     private Double endGoal;
     private Enum goalType;
     private Date goalStartDate;
@@ -28,28 +27,28 @@ public class Goal {
 
     }
 
-    public Goal(Double startingAmount, Double endGoal, Enum goalType, Date goalStartDate,Date endGoalDate) {
-        this.startingAmount = startingAmount;
+    public Goal(Double savedSoFar, Double endGoal, Enum goalType, Date goalStartDate,Date endGoalDate) {
+        this.savedSoFar = savedSoFar;
         this.endGoal = endGoal;
         this.goalType = goalType;
         this.goalStartDate = goalStartDate;
         this.endGoal = endGoal;
     }
 
-    public Double getStartingAmount() {
-        return startingAmount;
+    public Date getEndGoalDate() {
+        return endGoalDate;
     }
 
-    public void setStartingAmount(Double startingAmount) {
-        this.startingAmount = startingAmount;
+    public void setEndGoalDate(Date endGoalDate) {
+        this.endGoalDate = endGoalDate;
     }
 
-    public Double getCurrentAmount() {
-        return currentAmount;
+    public Double getSavedSoFar() {
+        return savedSoFar;
     }
 
-    public void setCurrentAmount(Double currentAmount) {
-        this.currentAmount = currentAmount;
+    public void setSavedSoFar(Double savedSoFar) {
+        this.savedSoFar = savedSoFar;
     }
 
     public Double getEndGoal() {
@@ -79,8 +78,7 @@ public class Goal {
     @Override
     public String toString() {
         return "Goal{" +
-                "startingAmount=" + startingAmount +
-                ", currentAmount=" + currentAmount +
+                ", currentAmount=" + savedSoFar +
                 ", endGoal=" + endGoal +
                 ", goalType=" + goalType +
                 ", goalStartDate=" + goalStartDate +

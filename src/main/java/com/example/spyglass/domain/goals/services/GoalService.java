@@ -9,8 +9,8 @@ public interface GoalService {
     Goal findById(Long Id)throws GoalNotFoundException;
     Goal updateGoal(Goal goal);
     void deleteGoal(Long Id)throws GoalNotFoundException;
-    Double progressBarCal(Double currentAmount, Double endGoal);
-    Double leftToSave(Double endGoal, Double currentAmount);
+    Double progressBarCal(Double savedSoFar, Double endGoal);
+    Double leftToSave(Double endGoal, Double savedSoFar);
     Double setGoal(Double endGoal);
 
 }
