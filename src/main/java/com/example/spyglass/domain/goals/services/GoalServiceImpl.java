@@ -38,7 +38,7 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
-    public Double progessBarCal(Double currentAmount, Double endGoal) {
+    public Double progressBarCal(Double currentAmount, Double endGoal) {
         return null;
     }
 
