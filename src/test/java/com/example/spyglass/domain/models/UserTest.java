@@ -2,6 +2,10 @@ package com.example.spyglass.domain.models;
 
 import com.example.spyglass.domain.user.models.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.BDDMockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,12 @@ public class UserTest {
         user2.setId(1L);
 
     }
-
+//    @Test
+//    @DisplayName("User Service: Create User - Success")
+//    public void createUserTestSuccess(){
+//        BDDMockito.doReturn(repo).when(repo).save(ArgumentMatchers.any());
+//        User returnedUser = userService;
+//    }
 
 
 }
