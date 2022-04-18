@@ -136,4 +136,6 @@ class GoalControllerTest extends BaseControllerTest {
         mockMvc.perform(delete("/goals/{id}", 1))
                 .andExpect(status().isNotFound());
     }
+
 }
+
