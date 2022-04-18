@@ -20,6 +20,9 @@ public class Goal {
     private String progressBar;
     private ArrayList<CompletedGoal> completedGoals = new ArrayList<>();
 
+    public Goal() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -54,6 +57,7 @@ public class Goal {
 
     public void setCompletedGoals(ArrayList<CompletedGoal> completedGoals) {
         this.completedGoals = completedGoals;
+
     }
 
     public Date getEndGoalDate() {
@@ -98,11 +102,6 @@ public class Goal {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public Goal (){
-
     }
 
     @Override

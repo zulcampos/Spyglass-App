@@ -51,8 +51,8 @@ class GoalServiceImplTest {
     @Test
     @DisplayName("Find Goal by Id")
     void findById01() throws GoalNotFoundException {
-        BDDMockito.doReturn(Optional.of(outputGoal)).when(goalRepo).findById(1l);
-        Goal foundGoal = goalService.findById(1l);
+        BDDMockito.doReturn(Optional.of(outputGoal)).when(goalRepo).findById(1L);
+        Goal foundGoal = goalService.findById(1L);
         Assertions.assertEquals(outputGoal.toString(),foundGoal.toString());
     }
 
@@ -68,7 +68,7 @@ class GoalServiceImplTest {
 
     @Test
     @DisplayName("Goal service update goal success")
-    void updateGoal() {
+    void updateGoal() throws GoalNotFoundException {
         Goal expectedGoal = new Goal(40.00,500.00,GoalType.TRAVEL,new Date());
         expectedGoal.setId(1l);
 
