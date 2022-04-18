@@ -145,6 +145,3 @@ class GoalControllerTest extends BaseControllerTest {
 
     }
 
-
-
-}
