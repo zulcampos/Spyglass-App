@@ -1,5 +1,6 @@
 package com.example.spyglass.domain.goals.services;
 
+
 import com.example.spyglass.domain.goals.enums.GoalType;
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.Goal;
@@ -16,12 +17,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 class GoalServiceImplTest {
@@ -36,11 +34,9 @@ class GoalServiceImplTest {
     private Goal outputGoal;
 
     @BeforeEach
-    public void setUp() throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
-        Date endGoalDate = format.parse("05-06-2022");
-        inputGoal = new Goal(5.00,200.00, GoalType.OTHER,new Date(),endGoalDate);
-        outputGoal = new Goal(5.00,200.00, GoalType.OTHER,new Date(),endGoalDate);
+    public void setUp(){
+        inputGoal = new Goal(5.00,200.00, GoalType.OTHER,new Date());
+        outputGoal = new Goal(5.00,200.00, GoalType.OTHER,new Date());
         outputGoal.setId(1l);
     }
 
@@ -72,10 +68,8 @@ class GoalServiceImplTest {
 
     @Test
     @DisplayName("Goal service update goal success")
-    void updateGoal() throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
-        Date endGoalDate = format.parse("05-06-2022");
-        Goal expectedGoal = new Goal(40.00,500.00,GoalType.TRAVEL,new Date(),endGoalDate);
+    void updateGoal() {
+        Goal expectedGoal = new Goal(40.00,500.00,GoalType.TRAVEL,new Date());
         expectedGoal.setId(1l);
 
         BDDMockito.doReturn(Optional.of(outputGoal)).when(goalRepo).findById(1l);
@@ -94,19 +88,71 @@ class GoalServiceImplTest {
     }
 
     @Test
-    void progressBarCal() {
-        String expected = "2.5%";
-        Double actual = goalService.progressBarCal(5.00,200.00);
+    void progressBarCal01() {
+        BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.createGoal(outputGoal);
+        String expected = "2.50%";
+        String actual = returnedGoal.getProgressBar();
 
         Assertions.assertEquals(expected,actual);
     }
 
     @Test
-    void leftToSave() {
-        String expected = "$195";
-        Double actual = goalService.leftToSave(200.00,5.00);
+    void progressBarCal02() {
+        String expected = "12.99%";
+        String actual = goalService.progressBarCal(25.97,200.00);
 
         Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void progressBarCal03() {
+        String expected = "15.78%";
+        String actual = goalService.progressBarCal(31.55,200.00);
+
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void leftToSave01() {
+        String expected = "$195.00";
+        String actual = goalService.leftToSave(200.00,5.00);
+
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void leftToSave02() {
+        String expected = "$144.32";
+        String actual = goalService.leftToSave(200.00,55.68);
+
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void leftToSave03() {
+        outputGoal.setSavedSoFar(24.23);
+        BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.createGoal(outputGoal);
+        String expected = "$175.77";
+        String actual = returnedGoal.getLeftToBeSaved();
+
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    void completedGoals01(){
+//        ArrayList<Goal> list = new ArrayList<>();
+//        inputGoal.setSavedSoFar(200.00);
+//        inputGoal.getSavedSoFar();
+        outputGoal.setSavedSoFar(200.00);
+        BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.createGoal(outputGoal);
+        Integer expected = 1;
+        Integer actual = returnedGoal.getCompletedGoals().size();
+
+        Assertions.assertEquals(expected,actual);
+
     }
 
     @Test

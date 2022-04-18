@@ -58,13 +58,14 @@ public class UserServiceImplTest {
   //  }
     @Test
     public void updateUser() throws UserNotFoundException {
-        User expectedUserUpdate = new User("sam","","dul@email.com","09/02/2000","dulpassword");
+        User expectedUserUpdate = new User("Sam","Iam","dul@email.com","04/6/1985","dulpassword");
+        expectedUserUpdate.setId(1l);
 
-        BDDMockito.doReturn(Optional.of(user)).when(mockUserRepo).findAllById(1L);
-        BDDMockito.doReturn(inputUser).when(mockUserRepo).save(ArgumentMatchers.any());
+        BDDMockito.doReturn(Optional.of(outputUser)).when(mockUserRepo).findAllById(1L);
+        BDDMockito.doReturn(expectedUserUpdate).when(mockUserRepo).save(ArgumentMatchers.any());
 
-        User user1 = userService.updateUser(new User());
-        Assertions.assertEquals(expectedUserUpdate.toString(),user1.toString());
+        User actualUser = userService.updateUser(expectedUserUpdate);
+        Assertions.assertEquals(expectedUserUpdate.toString(), actualUser.toString());
     }
 
     @Test

@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) throws UserNotFoundException {
         Long id = user.getId();
-        Optional<User> taskBunnyExistOption = userRepo.findById(id);
-        if(taskBunnyExistOption.isEmpty())
+        Optional<User> userOptional = userRepo.findById(id);
+        if(userOptional.isEmpty())
             throw new UserNotFoundException("No user with id");
         return userRepo.save(user);
     }
@@ -56,10 +56,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUser(User user) throws UserNotFoundException {
         Optional<User> userOptional = userRepo.findById(1l);
-        if(userOptional.isEmpty()){
-            throw new UserNotFoundException("User with id not found " );
-        }
-        return userOptional.get();
+        if(userOptional.isEmpty())
+            throw new UserNotFoundException("User with id not found ");
+            return userOptional.get();
+
     }
 
     @Override
