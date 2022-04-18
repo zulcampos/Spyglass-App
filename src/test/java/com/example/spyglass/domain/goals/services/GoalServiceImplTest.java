@@ -142,9 +142,7 @@ class GoalServiceImplTest {
 
     @Test
     void completedGoals01(){
-//        ArrayList<Goal> list = new ArrayList<>();
-//        inputGoal.setSavedSoFar(200.00);
-//        inputGoal.getSavedSoFar();
+
         outputGoal.setSavedSoFar(200.00);
         BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
         Goal returnedGoal = goalService.createGoal(outputGoal);
