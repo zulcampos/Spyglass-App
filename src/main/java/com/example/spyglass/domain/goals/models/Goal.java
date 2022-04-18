@@ -29,7 +29,6 @@ public class Goal {
 
     public Goal(Double savedSoFar, Double endGoal, Enum goalType, Date goalStartDate,Date endGoalDate) {
         this.savedSoFar = savedSoFar;
-        this.endGoal = endGoal;
         this.goalType = goalType;
         this.goalStartDate = goalStartDate;
         this.endGoal = endGoal;

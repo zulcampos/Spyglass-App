@@ -44,7 +44,7 @@ public class UserServiceImplTest {
 
     @Test
     public void createUser() {
-        BDDMockito.doReturn(inputUser).when(mockUserRepo).save(ArgumentMatchers.any(user));
+        BDDMockito.doReturn(inputUser).when(mockUserRepo).save(ArgumentMatchers.any());
         User returnedUser = userService.createUser(inputUser);
         Assertions.assertNotNull(returnedUser);
     }
