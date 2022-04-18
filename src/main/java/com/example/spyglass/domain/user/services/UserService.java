@@ -9,7 +9,7 @@ public interface UserService {
     User createUser(User user);
     User updatePasswords(String password) throws IncorrectPasswordException;
     User findById(Long id) throws UserNotFoundException;
-    User updateUser(User user) throws UserNotFoundException;
+    User updateUser( User user) throws UserNotFoundException;
     User findUser (User user) throws UserNotFoundException;
     Boolean deleteUser(Long id) throws UserHasBeenDeleted;
 

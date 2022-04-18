@@ -88,12 +88,5 @@ public class UserServiceImplTest {
         Assertions.assertEquals(completeUser.getId(), 1L);
 
      }
-   // @Test
-   // public void updatePassword() throws IncorrectPasswordException {
-//        BDDMockito.doReturn(Optional.of(outputUser)).when(mockUserRepo).setPassword("dulpassword");
-//        User passwordUser = userService.updatePasswords("dulpassword");
-//
-//        Assertions.assertEquals(outputUser.toString(),passwordUser.toString());
-//    }
 
 }
