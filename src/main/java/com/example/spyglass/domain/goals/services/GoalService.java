@@ -6,11 +6,11 @@ import com.example.spyglass.domain.goals.models.Goal;
 
 public interface GoalService {
     Goal createGoal(Goal goal);
-    Goal findById(Long Id);
+    Goal findById(Long Id)throws GoalNotFoundException;
     Goal updateGoal(Goal goal);
     void deleteGoal(Long Id)throws GoalNotFoundException;
-    Double progessBarCal(Double currentAmount, Double endGoal);
-    Double leftToSave(Double endGoal, Double currentAmount);
+    Double progressBarCal(Double savedSoFar, Double endGoal);
+    Double leftToSave(Double endGoal, Double savedSoFar);
     Double setGoal(Double endGoal);
 
 }
