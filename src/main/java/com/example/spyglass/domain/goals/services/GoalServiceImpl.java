@@ -5,17 +5,26 @@ import com.example.spyglass.domain.goals.models.Goal;
 
 import com.example.spyglass.domain.goals.models.Goal;
 import com.example.spyglass.domain.goals.repos.GoalRepo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class GoalServiceImpl implements GoalService{
     private static final Logger logger = LoggerFactory.getLogger(GoalServiceImpl.class);
+
+    private GoalService goalService;
 
     private GoalRepo goalRepo;
 
@@ -28,26 +37,38 @@ public class GoalServiceImpl implements GoalService{
     public Goal createGoal(Goal goal) {
         goal.setLeftToBeSaved(leftToSave(goal.getEndGoal(),goal.getSavedSoFar()));
         goal.setProgressBar(progressBarCal(goal.getSavedSoFar(),goal.getEndGoal()));
+        return goalRepo.save(goal);
 
+    }
 
+    @Override
+    public Goal findById(Long Id) throws GoalNotFoundException {
+        Optional<Goal> goalOptional = goalRepo.findById(Id);
+        if(goalOptional.isEmpty())
+            throw new GoalNotFoundException("Goal Not Found");
+        return goalOptional.get();
+    }
+
+    @Override
+    public Goal updateGoal(Goal goal) throws GoalNotFoundException {
+        Long id = goal.getId();
+        Optional<Goal> goalOptional = goalRepo.findById(id);
+        if(goalOptional.isEmpty())
+            throw new GoalNotFoundException("Goal not Found");
         return goalRepo.save(goal);
     }
 
     @Override
-    public Goal findById(Long Id) {return null;
-    }
-
-    @Override
-    public Goal updateGoal(Goal goal) {return null;
-    }
-
-    @Override
     public void deleteGoal(Long Id) throws GoalNotFoundException {
+        Optional<Goal> goalOptional = goalRepo.findById(Id);
+        if(goalOptional.isEmpty())
+            throw new GoalNotFoundException("No goal with that Id");
+        Goal goalToRemove = goalOptional.get();
+        goalRepo.delete(goalToRemove);
     }
 
     @Override
     public String progressBarCal(Double savedSoFar, Double endGoal) {
-
         Double progressBarCalculation = (savedSoFar / endGoal) * 100;
         String formattedDecimal = String.format("%.2f", progressBarCalculation);
         String formattedAnswer = formattedDecimal +"%";
@@ -78,5 +99,6 @@ public class GoalServiceImpl implements GoalService{
         }
         return allGoals;
     }
+
 
 }

@@ -1,5 +1,7 @@
 package com.example.spyglass.domain.user.services;
 
+import com.example.spyglass.domain.user.exceptions.IncorrectPasswordException;
+import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
 import com.example.spyglass.domain.user.models.User;
 import com.example.spyglass.domain.user.repos.UserRepo;
@@ -8,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
 import java.util.Optional;
 
 
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User updatePasswords(String password) {
+    public User updatePasswords(String password) throws IncorrectPasswordException {
         return null;
     }
 
@@ -62,18 +63,27 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public void deleteUser(User user) {
 
+    @Override
+    public Boolean deleteUser(Long id) throws UserHasBeenDeleted {
+        Optional<User> optionalUser = userRepo.findById(id);
+        if (optionalUser.isEmpty())
+            throw new UserHasBeenDeleted("User " + id + " has been deleted");
+            User user = optionalUser.get();
+            userRepo.delete(user);
+        return true;
     }
     @Override
-    public String createProfile(String firstName, String lastName, String dateOfBirth, String email, String password) {
-        return null;
+    public User createProfile(User user) {
+        User completeProfile = userRepo.save(user);
+        logger.debug("This user is authorized. ");
+        return completeProfile;
 
 
     }
 
-    // @Override // is deleting user deleting the whole user account?
+//    @Override // is deleting user deleting the whole user account?
     //will we need a new exception
-   // public void deleteUser(String id){userRepo.delete();}
+//   public void deleteUser(String id){userRepo.delete();}
 }
+//logger.debug("Looking for User with id {}", id);

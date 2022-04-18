@@ -20,12 +20,11 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String dateOfBirth, String password) {
+    public User(String firstName, String lastName, String email, String dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.password = password;
     }
 
     public Long getId() {
@@ -68,26 +67,15 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(dateOfBirth, user.dateOfBirth) && Objects.equals(password, user.password);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(dateOfBirth, user.dateOfBirth);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, dateOfBirth, password);
-    }
 
     @Override
     public String toString() {
@@ -97,7 +85,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", password='" + password + '\'' +
+
                 '}';
     }
 }

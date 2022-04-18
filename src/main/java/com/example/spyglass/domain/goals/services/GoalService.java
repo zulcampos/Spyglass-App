@@ -11,7 +11,7 @@ import java.util.List;
 public interface GoalService {
     Goal createGoal(Goal goal);
     Goal findById(Long Id)throws GoalNotFoundException;
-    Goal updateGoal(Goal goal);
+    Goal updateGoal(Goal goal) throws GoalNotFoundException;
     void deleteGoal(Long Id)throws GoalNotFoundException;
     String progressBarCal(Double savedSoFar, Double endGoal);
     String leftToSave(Double endGoal, Double savedSoFar);
