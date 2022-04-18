@@ -1,7 +1,10 @@
 package com.example.spyglass.domain.goals.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 public class Goal {
     @Id
@@ -13,25 +16,48 @@ public class Goal {
     private Enum goalType;
     private Date goalStartDate;
     private Date endGoalDate;
+    private String leftToBeSaved;
+    private String progressBar;
+    private ArrayList<CompletedGoal> completedGoals = new ArrayList<>();
+
+    public Goal() {
+    }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public Goal (){
-
-    }
-
-    public Goal(Double savedSoFar, Double endGoal, Enum goalType, Date goalStartDate,Date endGoalDate) {
+    public Goal(Double savedSoFar, Double endGoal, Enum goalType, Date goalStartDate) {
         this.savedSoFar = savedSoFar;
+        this.endGoal = endGoal;
         this.goalType = goalType;
         this.goalStartDate = goalStartDate;
         this.endGoal = endGoal;
+    }
+
+    public String getProgressBar() {
+        return progressBar;
+    }
+
+    public void setProgressBar(String progressBar) {
+        this.progressBar = progressBar;
+    }
+
+    public String getLeftToBeSaved() {
+        return leftToBeSaved;
+    }
+
+    public void setLeftToBeSaved(String leftToBeSaved) {
+        this.leftToBeSaved = leftToBeSaved;
+    }
+
+    public ArrayList<CompletedGoal> getCompletedGoals() {
+       return completedGoals;
+    }
+
+    public void setCompletedGoals(ArrayList<CompletedGoal> completedGoals) {
+        this.completedGoals = completedGoals;
+
     }
 
     public Date getEndGoalDate() {
@@ -72,6 +98,10 @@ public class Goal {
 
     public void setGoalStartDate(Date goalStartDate) {
         this.goalStartDate = goalStartDate;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
