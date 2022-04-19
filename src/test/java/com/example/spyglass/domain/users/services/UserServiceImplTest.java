@@ -1,4 +1,4 @@
-package com.example.spyglass.domain.service;
+package com.example.spyglass.domain.users.services;
 
 import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
