@@ -16,8 +16,8 @@ public class Goal {
     private Enum goalType;
     private Date goalStartDate;
     private Date endGoalDate;
-    private String leftToBeSaved;
-    private String progressBar;
+    private Double leftToBeSaved;
+    private Double progressBar;
     private ArrayList<CompletedGoal> completedGoals = new ArrayList<>();
 
     public Goal() {
@@ -35,19 +35,19 @@ public class Goal {
         this.endGoal = endGoal;
     }
 
-    public String getProgressBar() {
+    public Double getProgressBar() {
         return progressBar;
     }
 
-    public void setProgressBar(String progressBar) {
+    public void setProgressBar(double progressBar) {
         this.progressBar = progressBar;
     }
 
-    public String getLeftToBeSaved() {
+    public Double getLeftToBeSaved() {
         return leftToBeSaved;
     }
 
-    public void setLeftToBeSaved(String leftToBeSaved) {
+    public void setLeftToBeSaved(Double leftToBeSaved) {
         this.leftToBeSaved = leftToBeSaved;
     }
 
