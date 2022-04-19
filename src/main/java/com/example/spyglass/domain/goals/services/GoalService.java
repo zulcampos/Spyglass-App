@@ -13,8 +13,8 @@ public interface GoalService {
     Goal findById(Long Id)throws GoalNotFoundException;
     Goal updateGoal(Goal goal) throws GoalNotFoundException;
     void deleteGoal(Long Id)throws GoalNotFoundException;
-    String progressBarCal(Double savedSoFar, Double endGoal);
-    String leftToSave(Double endGoal, Double savedSoFar);
+    Double progressBarCal(Double savedSoFar, Double endGoal);
+    Double leftToSave(Double endGoal, Double savedSoFar);
     Double setGoal(Double endGoal);
     ArrayList<CompletedGoal> completedGoals(Double savedSoFar, Double endGoal);
 

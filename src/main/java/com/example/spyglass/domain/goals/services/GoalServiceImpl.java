@@ -68,19 +68,16 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
-    public String progressBarCal(Double savedSoFar, Double endGoal) {
+    public Double progressBarCal(Double savedSoFar, Double endGoal) {
         Double progressBarCalculation = (savedSoFar / endGoal) * 100;
-        String formattedDecimal = String.format("%.2f", progressBarCalculation);
-        String formattedAnswer = formattedDecimal +"%";
-        logger.info("Calculated progress bar %", formattedAnswer);
-        return formattedAnswer;
+        logger.info("Calculated progress bar %", progressBarCalculation);
+        return progressBarCalculation;
     }
 
     @Override
-    public String leftToSave(Double endGoal, Double savedSoFar) {
+    public Double leftToSave(Double endGoal, Double savedSoFar) {
         Double moneyLeftToSave = endGoal - savedSoFar;
-        String formattedAnswer = "$" + String.format("%.2f",moneyLeftToSave);
-        return formattedAnswer;
+        return moneyLeftToSave;
     }
 
     @Override
@@ -95,11 +92,10 @@ public class GoalServiceImpl implements GoalService{
         Goal goal = new Goal();
         goal.setSavedSoFar(savedSoFar);
         goal.setEndGoal(endGoal);
-        if(goal.getSavedSoFar()== goal.getEndGoal()){
+        if(goal.getSavedSoFar().equals(goal.getEndGoal())){
             allGoals.add(completedGoal);
         }
         return allGoals;
     }
-
 
 }
