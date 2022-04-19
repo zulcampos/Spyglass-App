@@ -91,40 +91,40 @@ class GoalServiceImplTest {
     void progressBarCal01() {
         BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
         Goal returnedGoal = goalService.createGoal(outputGoal);
-        String expected = "2.50%";
-        String actual = returnedGoal.getProgressBar();
+        Double expected = 2.50;
+        Double actual = returnedGoal.getProgressBar();
 
         Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void progressBarCal02() {
-        String expected = "12.99%";
-        String actual = goalService.progressBarCal(25.97,200.00);
+        Double expected = 12.99;
+        Double actual = goalService.progressBarCal(25.97,200.00);
 
         Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void progressBarCal03() {
-        String expected = "15.78%";
-        String actual = goalService.progressBarCal(31.55,200.00);
+        Double expected = 15.78;
+        Double actual = goalService.progressBarCal(31.55,200.00);
 
         Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void leftToSave01() {
-        String expected = "$195.00";
-        String actual = goalService.leftToSave(200.00,5.00);
+        Double expected = 195.00;
+        Double actual = goalService.leftToSave(200.00,5.00);
 
         Assertions.assertEquals(expected,actual);
     }
 
     @Test
     void leftToSave02() {
-        String expected = "$144.32";
-        String actual = goalService.leftToSave(200.00,55.68);
+        Double expected = 144.32;
+        Double actual = goalService.leftToSave(200.00,55.68);
 
         Assertions.assertEquals(expected,actual);
     }
@@ -134,8 +134,8 @@ class GoalServiceImplTest {
         outputGoal.setSavedSoFar(24.23);
         BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
         Goal returnedGoal = goalService.createGoal(outputGoal);
-        String expected = "$175.77";
-        String actual = returnedGoal.getLeftToBeSaved();
+        Double expected = 175.77;
+        Double actual = returnedGoal.getLeftToBeSaved();
 
         Assertions.assertEquals(expected,actual);
     }
