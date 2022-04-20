@@ -99,7 +99,7 @@ class GoalServiceImplTest {
 
     @Test
     void progressBarCal02() {
-        Double expected = 12.99;
+        Double expected = 12.985;
         Double actual = goalService.progressBarCal(25.97,200.00);
 
         Assertions.assertEquals(expected,actual);
