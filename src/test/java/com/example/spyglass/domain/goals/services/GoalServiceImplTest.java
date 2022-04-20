@@ -1,6 +1,5 @@
 package com.example.spyglass.domain.goals.services;
 
-
 import com.example.spyglass.domain.goals.enums.GoalType;
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.Goal;
@@ -113,6 +112,7 @@ class GoalServiceImplTest {
         Assertions.assertEquals(expected,actual);
     }
 
+
     @Test
     void leftToSave01() {
         Double expected = 195.00;
@@ -141,12 +141,27 @@ class GoalServiceImplTest {
     }
 
     @Test
+    @DisplayName("Completed Goals - Success")
     void completedGoals01(){
 
         outputGoal.setSavedSoFar(200.00);
         BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
         Goal returnedGoal = goalService.createGoal(outputGoal);
         Integer expected = 1;
+        Integer actual = returnedGoal.getCompletedGoals().size();
+
+        Assertions.assertEquals(expected,actual);
+
+    }
+
+    @Test
+    @DisplayName("Completed Goals - Fail")
+    void completedGoals02(){
+
+        outputGoal.setSavedSoFar(195.00);
+        BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.createGoal(outputGoal);
+        Integer expected = 0;
         Integer actual = returnedGoal.getCompletedGoals().size();
 
         Assertions.assertEquals(expected,actual);

@@ -1,31 +1,6 @@
-<<<<<<< HEAD
+
 //package com.example.spyglass.domain.user.controller;
-//
-//import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
-//import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
-//import com.example.spyglass.domain.user.models.User;
-//import com.example.spyglass.domain.user.services.UserService;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.logging.Logger;
-//
-//
-//
-//@RestController
-//@RequestMapping("/user")
-//public class UserController {
-//    private static Logger logger = (Logger) LoggerFactory.getLogger(UserController.class);
-//    private final UserService userService;
-//
-//    @Autowired
-//    public UserController(UserController userController, UserService userService) {
-//        this.userService = userService;
-//
-=======
+
 package com.example.spyglass.domain.user.controller;
 
 import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
@@ -59,12 +34,6 @@ public class UserController {
         return response;
     }
 
-//        @GetMapping("")
-//    public ResponseEntity<User> getUser(){
-//        ResponseEntity<User> users = userService.;
-//        Iterable<User> users1 = new Iterable<>(users, HttpStatus.OK);
-//        return users1;
->>>>>>> b3c68fa375994d770e4505593dc530418a6246b2
 //    }
 //
 //    @PostMapping("")
@@ -118,8 +87,8 @@ public class UserController {
 //            }
 //
 //        }
-//}
-//
+}
+
 
 
 ////+UserController()

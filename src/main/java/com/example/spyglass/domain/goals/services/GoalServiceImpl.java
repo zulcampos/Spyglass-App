@@ -37,6 +37,7 @@ public class GoalServiceImpl implements GoalService{
     public Goal createGoal(Goal goal) {
         goal.setLeftToBeSaved(leftToSave(goal.getEndGoal(),goal.getSavedSoFar()));
         goal.setProgressBar(progressBarCal(goal.getSavedSoFar(),goal.getEndGoal()));
+        goal.setCompletedGoals(completedGoals(goal.getSavedSoFar(),goal.getEndGoal()));
         return goalRepo.save(goal);
 
     }
