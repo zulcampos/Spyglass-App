@@ -1,6 +1,6 @@
 package com.example.spyglass.domain.goals.controllers;
 
-import com.example.spyglass.domain.BaseControllerTest;
+import com.example.spyglass.BaseControllerTest;
 import com.example.spyglass.domain.goals.enums.GoalType;
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.Goal;
@@ -25,13 +25,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import javax.persistence.EnumType;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
 
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest

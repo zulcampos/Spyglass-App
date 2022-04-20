@@ -1,8 +1,10 @@
 package com.example.spyglass.domain.user.services;
-import com.example.spyglass.domain.user.exceptions.IncorrectPasswordException;
 import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
+import com.example.spyglass.domain.user.exceptions.IncorrectPasswordException;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
 import com.example.spyglass.domain.user.models.User;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -12,6 +14,7 @@ public interface UserService {
     User updateUser( User user) throws UserNotFoundException;
     User findUser (User user) throws UserNotFoundException;
     Boolean deleteUser(Long id) throws UserHasBeenDeleted;
+    List<User> getAllUsers();
 
     User createProfile(User user);
 

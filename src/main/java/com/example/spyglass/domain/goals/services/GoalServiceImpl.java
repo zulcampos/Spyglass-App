@@ -1,10 +1,8 @@
 package com.example.spyglass.domain.goals.services;
-import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
-import com.example.spyglass.domain.goals.models.CompletedGoal;
-import com.example.spyglass.domain.goals.models.Goal;
-
 import com.example.spyglass.domain.goals.models.Goal;
 import com.example.spyglass.domain.goals.repos.GoalRepo;
+import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
+import com.example.spyglass.domain.goals.models.CompletedGoal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,12 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Service

@@ -1,9 +1,6 @@
 package com.example.spyglass.domain.users.controller;
 
-import com.example.spyglass.domain.BaseControllerTest;
-import com.example.spyglass.domain.goals.enums.GoalType;
-import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
-import com.example.spyglass.domain.goals.models.Goal;
+import com.example.spyglass.BaseControllerTest;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
 import com.example.spyglass.domain.user.models.User;
 import com.example.spyglass.domain.user.services.UserService;
@@ -24,13 +21,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Date;
 
-import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)

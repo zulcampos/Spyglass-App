@@ -11,15 +11,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
-    private final UserService userService;
+    private UserService userService;
 
 
     @Autowired
@@ -28,20 +27,20 @@ public class UserController {
 
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     public ResponseEntity<User> createUserRequest(@RequestBody User user) {
         User savedUser = userService.createUser(user);
         ResponseEntity response = new ResponseEntity<>(savedUser, HttpStatus.CREATED);
         return response;
     }
 
-    //        @GetMapping("")
-//    public ResponseEntity<User> getUser(){
-//        ResponseEntity<User> users = userService.;
-//        Iterable<User> users1 = new Iterable<>(users, HttpStatus.OK);
-//        return users1;
-//    }
-    @GetMapping("{/id}")
+    @GetMapping("")
+    public ResponseEntity<List<User>> getUser(){
+        List<User> users = userService.getAllUsers();
+        ResponseEntity<List<User>> users1 = new ResponseEntity<>(users, HttpStatus.OK);
+        return users1;
+    }
+    @GetMapping("/{id}")
     public ResponseEntity<?> getProfileById(@PathVariable Integer id) {
         User user;
         try {
@@ -57,7 +56,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateProfile(@PathVariable Integer Id, @RequestBody User user) {
+    public ResponseEntity<User> updateProfile(@PathVariable Integer Id, @RequestBody User user) {
         try {
             User updatedUser = userService.updateUser(user);
             ResponseEntity response = new ResponseEntity<>(updatedUser, HttpStatus.OK);
@@ -70,15 +69,9 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProfile(Integer id) {
-        try {
-            userService.deleteUser(Long.valueOf(id));
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        } catch (UserHasBeenDeleted e) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .build();
-        }
+    public ResponseEntity<User> deleteProfile(Integer id) throws UserHasBeenDeleted {
+        userService.deleteUser(Long.valueOf(id));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
     }
 }

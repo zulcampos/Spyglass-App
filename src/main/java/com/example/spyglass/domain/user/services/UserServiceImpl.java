@@ -1,7 +1,7 @@
 package com.example.spyglass.domain.user.services;
 
-import com.example.spyglass.domain.user.exceptions.IncorrectPasswordException;
 import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
+import com.example.spyglass.domain.user.exceptions.IncorrectPasswordException;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
 import com.example.spyglass.domain.user.models.User;
 import com.example.spyglass.domain.user.repos.UserRepo;
@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -73,6 +74,12 @@ public class UserServiceImpl implements UserService {
             userRepo.delete(user);
         return true;
     }
+
+    @Override
+    public List<User> getAllUsers() {
+        return (List) userRepo.findAll();
+    }
+
     @Override
     public User createProfile(User user) {
         User completeProfile = userRepo.save(user);

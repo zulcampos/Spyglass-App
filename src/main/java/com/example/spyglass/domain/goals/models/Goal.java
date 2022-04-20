@@ -3,7 +3,6 @@ package com.example.spyglass.domain.goals.models;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Goal {
