@@ -16,7 +16,8 @@ public interface GoalService {
     Double progressBarCal(Double savedSoFar, Double endGoal);
     Double leftToSave(Double endGoal, Double savedSoFar);
     Double setGoal(Double endGoal);
-    ArrayList<CompletedGoal> completedGoals(Double savedSoFar, Double endGoal);
+    ArrayList<CompletedGoal> completedGoals();
+    List<Goal> findAllGoals();
 
 
 }
