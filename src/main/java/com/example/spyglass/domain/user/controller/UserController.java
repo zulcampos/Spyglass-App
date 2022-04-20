@@ -4,24 +4,23 @@ import com.example.spyglass.domain.user.exceptions.UserHasBeenDeleted;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
 import com.example.spyglass.domain.user.models.User;
 import com.example.spyglass.domain.user.services.UserService;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.logging.Logger;
 
 
-
-@RestController
-@RequestMapping("/user")
+//@RestController
+//@RequestMapping("/user")
 public class UserController {
-    private static Logger logger = (Logger) LoggerFactory.getLogger(UserController.class);
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private final UserService userService;
 
     @Autowired
-    public UserController(UserController userController, UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
 
     }
