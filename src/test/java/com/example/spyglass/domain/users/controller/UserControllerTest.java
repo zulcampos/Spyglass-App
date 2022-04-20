@@ -1,9 +1,6 @@
 package com.example.spyglass.domain.users.controller;
 
-import com.example.spyglass.domain.BaseControllerTest;
-import com.example.spyglass.domain.goals.enums.GoalType;
-import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
-import com.example.spyglass.domain.goals.models.Goal;
+import com.example.spyglass.BaseControllerTest;
 import com.example.spyglass.domain.user.exceptions.UserNotFoundException;
 import com.example.spyglass.domain.user.models.User;
 import com.example.spyglass.domain.user.services.UserService;

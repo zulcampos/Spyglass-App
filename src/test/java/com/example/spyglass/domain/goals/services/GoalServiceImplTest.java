@@ -1,10 +1,10 @@
 package com.example.spyglass.domain.goals.services;
 
-
 import com.example.spyglass.domain.goals.enums.GoalType;
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.Goal;
 import com.example.spyglass.domain.goals.repos.GoalRepo;
+import com.example.spyglass.domain.goals.services.GoalService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -99,7 +99,7 @@ class GoalServiceImplTest {
 
     @Test
     void progressBarCal02() {
-        Double expected = 12.99;
+        Double expected = 12.985;
         Double actual = goalService.progressBarCal(25.97,200.00);
 
         Assertions.assertEquals(expected,actual);
@@ -112,6 +112,7 @@ class GoalServiceImplTest {
 
         Assertions.assertEquals(expected,actual);
     }
+
 
     @Test
     void leftToSave01() {
@@ -141,12 +142,27 @@ class GoalServiceImplTest {
     }
 
     @Test
+    @DisplayName("Completed Goals - Success")
     void completedGoals01(){
 
         outputGoal.setSavedSoFar(200.00);
         BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
         Goal returnedGoal = goalService.createGoal(outputGoal);
         Integer expected = 1;
+        Integer actual = returnedGoal.getCompletedGoals().size();
+
+        Assertions.assertEquals(expected,actual);
+
+    }
+
+    @Test
+    @DisplayName("Completed Goals - Fail")
+    void completedGoals02(){
+
+        outputGoal.setSavedSoFar(195.00);
+        BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.createGoal(outputGoal);
+        Integer expected = 0;
         Integer actual = returnedGoal.getCompletedGoals().size();
 
         Assertions.assertEquals(expected,actual);

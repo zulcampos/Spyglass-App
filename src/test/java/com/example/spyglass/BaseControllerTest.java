@@ -1,4 +1,4 @@
-package com.example.spyglass.domain;
+package com.example.spyglass;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

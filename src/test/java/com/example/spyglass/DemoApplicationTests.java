@@ -1,4 +1,4 @@
-package com.example.spyglass.domain;
+package com.example.spyglass;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -3,21 +3,18 @@ import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.CompletedGoal;
 import com.example.spyglass.domain.goals.models.Goal;
 
-import com.example.spyglass.domain.goals.models.Goal;
 import com.example.spyglass.domain.goals.repos.GoalRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Service
@@ -37,6 +34,9 @@ public class GoalServiceImpl implements GoalService{
     public Goal createGoal(Goal goal) {
         goal.setLeftToBeSaved(leftToSave(goal.getEndGoal(),goal.getSavedSoFar()));
         goal.setProgressBar(progressBarCal(goal.getSavedSoFar(),goal.getEndGoal()));
+        goal.setCompletedGoals(completedGoals());
+
+
         return goalRepo.save(goal);
 
     }
@@ -86,7 +86,18 @@ public class GoalServiceImpl implements GoalService{
         return null;
     }
 
-    public ArrayList<CompletedGoal> completedGoals(Double savedSoFar, Double endGoal){
+    @Override
+    public ArrayList<CompletedGoal> completedGoals() {
+        Goal goal = new Goal();
+        return completedGoalsCalculation(goal.getSavedSoFar(),goal.getEndGoal());
+    }
+
+    @Override
+    public List<Goal> findAllGoals() {
+        return (List)goalRepo.findAll();
+    }
+
+    public ArrayList<CompletedGoal> completedGoalsCalculation(Double savedSoFar, Double endGoal){
         ArrayList<CompletedGoal> allGoals = new ArrayList<>();
         CompletedGoal completedGoal = new CompletedGoal();
         Goal goal = new Goal();
