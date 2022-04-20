@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
-
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     private static Logger logger = (Logger) LoggerFactory.getLogger(UserController.class);
-    private final UserService userService;
+    private UserService userService;
 
     @Autowired
-    public UserController(UserController userController, UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
 
     }
@@ -81,13 +80,13 @@ public class UserController {
 
 
 
-////+UserController()
-////        -Static: Logger
-////        GetMapping
-////        -getuser
-////        GetMapping
-////        -getUserById()
-////        PutMapping
-////        -updateUser()
-////        PostMapping
-////        -createUser()
+//+UserController()
+//        -Static: Logger
+//        GetMapping
+//        -getuser
+//        GetMapping
+//        -getUserById()
+//        PutMapping
+//        -updateUser()
+//        PostMapping
+//        -createUser()
