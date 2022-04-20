@@ -1,9 +1,15 @@
 package com.example.spyglass.domain.goals.services;
+<<<<<<< HEAD
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.CompletedGoal;
 import com.example.spyglass.domain.goals.models.Goal;
 
+=======
+import com.example.spyglass.domain.goals.models.Goal;
+>>>>>>> dulside
 import com.example.spyglass.domain.goals.repos.GoalRepo;
+import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
+import com.example.spyglass.domain.goals.models.CompletedGoal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
