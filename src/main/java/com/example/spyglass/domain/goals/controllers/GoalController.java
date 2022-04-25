@@ -31,7 +31,7 @@ public class GoalController {
         return response;
     }
     @GetMapping("")
-    public ResponseEntity<List<Goal>> getAllCompletedGoals(){
+    public ResponseEntity<List<Goal>> getAllGoals(){
         List<Goal> goals = goalService.findAllGoals();
         ResponseEntity<List<Goal>> response = new ResponseEntity<>(goals, HttpStatus.CREATED);
         return response;
@@ -49,6 +49,16 @@ public class GoalController {
                     .build();
         }
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateGoal(@PathVariable Long id,@RequestBody Goal goal){
+        try{
+            Goal updatedGoal = goalService.updateGoal(id);
+            ResponseEntity response = new ResponseEntity<>(updatedGoal, HttpStatus.OK);
+            return response;
+        }catch (GoalNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
 
 
+    }
 }

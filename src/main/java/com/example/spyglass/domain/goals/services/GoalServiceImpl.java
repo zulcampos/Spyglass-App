@@ -1,12 +1,12 @@
 package com.example.spyglass.domain.goals.services;
-<<<<<<< HEAD
+
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.CompletedGoal;
 import com.example.spyglass.domain.goals.models.Goal;
 
-=======
+
 import com.example.spyglass.domain.goals.models.Goal;
->>>>>>> dulside
+
 import com.example.spyglass.domain.goals.repos.GoalRepo;
 import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.CompletedGoal;
@@ -56,12 +56,12 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
-    public Goal updateGoal(Goal goal) throws GoalNotFoundException {
-        Long id = goal.getId();
+    public Goal updateGoal(Long id) throws GoalNotFoundException {
         Optional<Goal> goalOptional = goalRepo.findById(id);
         if(goalOptional.isEmpty())
             throw new GoalNotFoundException("Goal not Found");
-        return goalRepo.save(goal);
+        Goal updatedGoal = goalOptional.get();
+        return goalRepo.save(updatedGoal);
     }
 
     @Override
@@ -86,11 +86,6 @@ public class GoalServiceImpl implements GoalService{
         return moneyLeftToSave;
     }
 
-    @Override
-    public Double setGoal(Double endGoal) {
-
-        return null;
-    }
 
     @Override
     public ArrayList<CompletedGoal> completedGoals() {
