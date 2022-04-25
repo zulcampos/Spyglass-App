@@ -9,7 +9,6 @@ public class CompletedGoal {
     public CompletedGoal() {
 
     }
-
     public ArrayList<Goal> getCompletedGoals() {
         return completedGoals;
     }

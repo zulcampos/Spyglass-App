@@ -107,7 +107,7 @@ class GoalServiceImplTest {
 
     @Test
     void progressBarCal03() {
-        Double expected = 15.78;
+        Double expected = 15.775;
         Double actual = goalService.progressBarCal(31.55,200.00);
 
         Assertions.assertEquals(expected,actual);
@@ -157,7 +157,7 @@ class GoalServiceImplTest {
 
     @Test
     @DisplayName("Completed Goals - Fail")
-    void completedGoals02(){
+    void completedGoals02() {
 
         outputGoal.setSavedSoFar(195.00);
         BDDMockito.doReturn(outputGoal).when(goalRepo).save(ArgumentMatchers.any());
@@ -165,7 +165,7 @@ class GoalServiceImplTest {
         Integer expected = 0;
         Integer actual = returnedGoal.getCompletedGoals().size();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 

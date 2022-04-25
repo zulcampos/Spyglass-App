@@ -4,6 +4,7 @@ import com.example.spyglass.domain.goals.exceptions.GoalNotFoundException;
 import com.example.spyglass.domain.goals.models.CompletedGoal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface GoalService {
     Goal createGoal(Goal goal);
@@ -12,8 +13,6 @@ public interface GoalService {
     void deleteGoal(Long Id)throws GoalNotFoundException;
     Double progressBarCal(Double savedSoFar, Double endGoal);
     Double leftToSave(Double endGoal, Double savedSoFar);
-    Double setGoal(Double endGoal);
-    ArrayList<CompletedGoal> completedGoals();
     List<Goal> findAllGoals();
 
 

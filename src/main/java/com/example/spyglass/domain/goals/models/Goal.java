@@ -22,16 +22,19 @@ public class Goal {
     public Goal() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public Goal(Double savedSoFar, Double endGoal, Enum goalType, Date goalStartDate) {
         this.savedSoFar = savedSoFar;
         this.endGoal = endGoal;
         this.goalType = goalType;
         this.goalStartDate = goalStartDate;
-        this.endGoal = endGoal;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setProgressBar(Double progressBar) {
+        this.progressBar = progressBar;
     }
 
     public Double getProgressBar() {
@@ -57,10 +60,6 @@ public class Goal {
     public void setCompletedGoals(ArrayList<CompletedGoal> completedGoals) {
         this.completedGoals = completedGoals;
 
-    }
-
-    public Date getEndGoalDate() {
-        return endGoalDate;
     }
 
     public void setEndGoalDate(Date endGoalDate) {

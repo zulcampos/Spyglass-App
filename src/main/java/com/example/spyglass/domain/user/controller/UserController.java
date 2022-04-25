@@ -23,6 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("http://localhost:3000")
 public class UserController {
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserService userService;

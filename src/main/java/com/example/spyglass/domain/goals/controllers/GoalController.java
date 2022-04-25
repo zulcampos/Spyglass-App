@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/goals")
+@CrossOrigin("http://localhost:3000")
 public class GoalController {
     private final Logger logger = LoggerFactory.getLogger(GoalController.class);
     private GoalService goalService;
@@ -24,26 +25,47 @@ public class GoalController {
     public GoalController(GoalService goalService){
         this.goalService = goalService;
     }
+
     @PostMapping("")
-    public ResponseEntity<Goal> createGoalRequest(@RequestBody Goal goal){
-        Goal savedGoal = goalService.createGoal(goal);
-        ResponseEntity response = new ResponseEntity(savedGoal, HttpStatus.OK);
-        return response;
+    public ResponseEntity<Goal> create(@RequestBody Goal goal) {
+        goal = goalService.createGoal(goal);
+        return new ResponseEntity<>(goal, HttpStatus.CREATED);
     }
-    @GetMapping("")
-    public ResponseEntity<List<Goal>> getAllCompletedGoals(){
-        List<Goal> goals = goalService.findAllGoals();
-        ResponseEntity<List<Goal>> response = new ResponseEntity<>(goals, HttpStatus.CREATED);
-        return response;
-    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getGoalById(@PathVariable Long id) throws GoalNotFoundException {
+    public ResponseEntity<Goal> requestUser(@PathVariable Long id) throws GoalNotFoundException {
+        Goal response = goalService.findById(id);
+        logger.info(response.toString());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Iterable<Goal>> getAll() throws GoalNotFoundException {
+        Iterable<Goal> all = goalService.findAllGoals();
+        return new ResponseEntity<>(all, HttpStatus.OK);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<?> updateGoal(@RequestBody Goal goal) {
         try {
-            Goal goal = goalService.findById(id);
-            ResponseEntity<?> response = new ResponseEntity<>(goal, HttpStatus.OK);
+            Goal updatedGoal = goalService.updateGoal(goal);
+            ResponseEntity response = new ResponseEntity(updatedGoal, HttpStatus.OK);
             return response;
+        } catch (GoalNotFoundException e) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
         }
-        catch (GoalNotFoundException e){
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteGoal(@PathVariable Long id) {
+        try {
+            goalService.deleteGoal(id);
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .build();
+        } catch (GoalNotFoundException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .build();
